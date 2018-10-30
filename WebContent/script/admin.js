@@ -3,7 +3,7 @@
  * Funções do perfil Administrador
  * -------------------------------------------
  */	
-	
+
 $(document).ready(function(){
 	//Objeto que guardará o usuário logado assim que soubermos quem ele é
 	var usuarioLogado;
@@ -415,7 +415,7 @@ $(document).ready(function(){
 	   });
 	}
 
-	visualizaDados= function(dados){
+	visualizaDados= function(dados){debugger
 		/*$.ajax({
 			type: "POST",
 			url: PATH + "VisualizaDados",
@@ -423,7 +423,7 @@ $(document).ready(function(){
 				
 				var html = dadosAdmLogado(dados);
 				html += "</table>";
-				$(".overflow").html(html);
+				$("#dadosAdm").html(html);
 			/*},
 			error: function(info){
 				alert("Erro ao consultar os contatos: "+ info.status + " - " + info.statusText);
