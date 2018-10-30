@@ -17,16 +17,15 @@ import br.com.mygame.classes.LoginsPorDia;
 import br.com.mygame.classes.Partidas;
 import br.com.mygame.classes.Usuario;
 import br.com.mygame.jdbcinterfaces.UsuarioDAO;
-import br.com.mygame.classes.Partidas;
 
 public class JDBCUsuarioDAO implements UsuarioDAO {
-
+	
 	private Connection conexao;
-
+	
 	public JDBCUsuarioDAO(Connection conexao) {
 		this.conexao = conexao;
 	}
-
+	
 	public boolean inserir(Usuario login) {
 		
 		String comando = "INSERT INTO usuarios (login, senha, permissao, nome, nascimento, email, data_cadastro) VALUES (?,?,?,?,?,?,?)";
@@ -47,8 +46,8 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		}
 		return true;
 	}
-
-
+	
+	
 	public Usuario buscarPorLogin(String login) {
 		String comando = "SELECT * FROM usuarios WHERE login = '" + login + "'";
 		Usuario usuario = new Usuario();
@@ -62,21 +61,21 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 				String senha = rs.getString("senha");
 				String permissao = rs.getString("permissao");
 				
-		        usuario.setLogin(login);
-		        usuario.setSenha(senha);
-		        usuario.setPermissao(permissao);
-		        usuario.setNome(nome);
-		        usuario.setNascimento(nascimento);
-		        usuario.setEmail(email);
+				usuario.setLogin(login);
+				usuario.setSenha(senha);
+				usuario.setPermissao(permissao);
+				usuario.setNome(nome);
+				usuario.setNascimento(nascimento);
+				usuario.setEmail(email);
 				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 		return usuario;
 	}
-
+	
 	public boolean atualizar(Usuario usuario) {
 		
 		String comando = "UPDATE usuarios SET senha=?, nome=?, nascimento=?, email=?";
@@ -96,7 +95,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		}
 		return true;
 	}
-
+	
 	public boolean deletar(String usuario) {
 		String comando = "DELETE FROM usuarios WHERE usuario = '" + usuario +"'";
 		Statement p;
@@ -109,7 +108,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		}
 		return true;
 	}
-
+	
 	public List<Usuario> buscar(String login) {
 		String comando = "SELECT * FROM usuarios";
 		System.out.println(comando);
@@ -127,13 +126,13 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 				String senha = rs.getString("senha");
 				String permissao = rs.getString("permissao");
 				
-		        usuario.setLogin(loginbd);
-		        usuario.setSenha(senha);
-		        usuario.setPermissao(permissao);
-		        usuario.setNome(nome);
-		        usuario.setNascimento(nascimento);
-		        usuario.setEmail(email);
-								
+				usuario.setLogin(loginbd);
+				usuario.setSenha(senha);
+				usuario.setPermissao(permissao);
+				usuario.setNome(nome);
+				usuario.setNascimento(nascimento);
+				usuario.setEmail(email);
+				
 				listUsuario.add(usuario);
 			}
 		} catch (Exception e) {
@@ -160,14 +159,14 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 				String fase = rs.getString("fase");
 				String usuarios_login = rs.getString("usuarios_login");
 				
-		        partidas.setid(id);
-		        partidas.setmoedas(moedas);
-		        partidas.sets_tempo(s_tempo);
-		        partidas.setpontuacao(pontuacao);
-		        partidas.setfase(fase);
-		        partidas.setusuarios_login(usuarios_login);
+				partidas.setid(id);
+				partidas.setmoedas(moedas);
+				partidas.sets_tempo(s_tempo);
+				partidas.setpontuacao(pontuacao);
+				partidas.setfase(fase);
+				partidas.setusuarios_login(usuarios_login);
 				
-		        listPartidas.add(partidas);
+				listPartidas.add(partidas);
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -182,14 +181,14 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		System.out.println(hoje);
 		
 		SimpleDateFormat formataDiaMes = new SimpleDateFormat("-MM-dd");
-	    String diaMesAtual = formataDiaMes.format(hoje);
-	    System.out.println(diaMesAtual);
-	    
-	    SimpleDateFormat formataAno = new SimpleDateFormat("yyyy");
-	    int anoAtual = Integer.parseInt(formataAno.format(hoje));
-	    System.out.println(anoAtual);
+		String diaMesAtual = formataDiaMes.format(hoje);
+		System.out.println(diaMesAtual);
 		
-		List <FaixaEtaria> listaDeJogadores = new ArrayList();
+		SimpleDateFormat formataAno = new SimpleDateFormat("yyyy");
+		int anoAtual = Integer.parseInt(formataAno.format(hoje));
+		System.out.println(anoAtual);
+		
+		List <FaixaEtaria> listaDeJogadores = new ArrayList<FaixaEtaria>();
 		//fim prepara��o
 		
 		//inicio primeira faixa etaria
@@ -216,15 +215,15 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		listaDeJogadores.add(zeroAnove);
 		//fim primeira faixa etaria
 		
-				
+		
 		//FaixaEtaria dezAquinze = new FaixaEtaria();
 		FaixaEtaria dezAquinze = new FaixaEtaria();
 		dezAquinze.setFaixa("10 a 15");
 		
-		 anoInicial = anoAtual-15;
-		 dataInicial = anoInicial+diaMesAtual;
-		 anoFinal = anoAtual-10;
-		 dataFinal = anoFinal+diaMesAtual;
+		anoInicial = anoAtual-15;
+		dataInicial = anoInicial+diaMesAtual;
+		anoFinal = anoAtual-10;
+		dataFinal = anoFinal+diaMesAtual;
 		
 		comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
 		System.out.println(comando);
@@ -244,10 +243,10 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		FaixaEtaria dezseisAvinte = new FaixaEtaria();
 		dezseisAvinte.setFaixa("16 a 20");
 		
-		 anoInicial = anoAtual-20;
-		 dataInicial = anoInicial+diaMesAtual;
-		 anoFinal = anoAtual-16;
-		 dataFinal = anoFinal+diaMesAtual;
+		anoInicial = anoAtual-20;
+		dataInicial = anoInicial+diaMesAtual;
+		anoFinal = anoAtual-16;
+		dataFinal = anoFinal+diaMesAtual;
 		
 		comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
 		System.out.println(comando);
@@ -255,7 +254,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 			java.sql.Statement stmt = conexao.createStatement();
 			ResultSet rs = stmt.executeQuery(comando);
 			while (rs.next()) {
-			dezseisAvinte.setQuantidade(rs.getInt("quantidade"));
+				dezseisAvinte.setQuantidade(rs.getInt("quantidade"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -267,10 +266,10 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		FaixaEtaria vinteumAtrinta = new FaixaEtaria();
 		vinteumAtrinta.setFaixa("21 a 30");
 		
-		 anoInicial = anoAtual-30;
-		 dataInicial = anoInicial+diaMesAtual;
-		 anoFinal = anoAtual-21;
-		 dataFinal = anoFinal+diaMesAtual;
+		anoInicial = anoAtual-30;
+		dataInicial = anoInicial+diaMesAtual;
+		anoFinal = anoAtual-21;
+		dataFinal = anoFinal+diaMesAtual;
 		
 		comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
 		System.out.println(comando);
@@ -290,10 +289,10 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		FaixaEtaria tresumAtrescinco = new FaixaEtaria();
 		tresumAtrescinco.setFaixa("31 a 35");
 		
-		 anoInicial = anoAtual-35;
-		 dataInicial = anoInicial+diaMesAtual;
-		 anoFinal = anoAtual-31;
-		 dataFinal = anoFinal+diaMesAtual;
+		anoInicial = anoAtual-35;
+		dataInicial = anoInicial+diaMesAtual;
+		anoFinal = anoAtual-31;
+		dataFinal = anoFinal+diaMesAtual;
 		
 		comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
 		System.out.println(comando);
@@ -313,10 +312,10 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		FaixaEtaria  tresseisAquarenta= new FaixaEtaria();
 		tresseisAquarenta.setFaixa("36 a 40");
 		
-		 anoInicial = anoAtual-40;
-		 dataInicial = anoInicial+diaMesAtual;
-		 anoFinal = anoAtual-36;
-		 dataFinal = anoFinal+diaMesAtual;
+		anoInicial = anoAtual-40;
+		dataInicial = anoInicial+diaMesAtual;
+		anoFinal = anoAtual-36;
+		dataFinal = anoFinal+diaMesAtual;
 		
 		comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
 		System.out.println(comando);
@@ -336,10 +335,10 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		FaixaEtaria  quatroumAcincocinco= new FaixaEtaria();
 		quatroumAcincocinco.setFaixa("41 a 55");
 		
-		 anoInicial = anoAtual-55;
-		 dataInicial = anoInicial+diaMesAtual;
-		 anoFinal = anoAtual-41;
-		 dataFinal = anoFinal+diaMesAtual;
+		anoInicial = anoAtual-55;
+		dataInicial = anoInicial+diaMesAtual;
+		anoFinal = anoAtual-41;
+		dataFinal = anoFinal+diaMesAtual;
 		
 		comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
 		System.out.println(comando);
@@ -360,10 +359,10 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		FaixaEtaria  maiorcincocinco= new FaixaEtaria();
 		maiorcincocinco.setFaixa("maior que 55");
 		
-		 anoInicial = anoAtual;
-		 dataInicial = anoInicial+diaMesAtual;
-		 anoFinal = anoAtual-56;
-		 dataFinal = anoFinal+diaMesAtual;
+		anoInicial = anoAtual;
+		dataInicial = anoInicial+diaMesAtual;
+		anoFinal = anoAtual-56;
+		dataFinal = anoFinal+diaMesAtual;
 		
 		comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
 		System.out.println(comando);
@@ -379,53 +378,48 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		
 		listaDeJogadores.add(maiorcincocinco);
 		return listaDeJogadores;
-
-	}
 		
-
-public List<LoginsPorDia> buscaLoginsPorDia(){
-	//prepara��o
-	Date hoje = Calendar.getInstance().getTime();
-    LoginsPorDia dia2 = null;
-	Usuario usuario = new Usuario();
-	String dataAtual = usuario.dataAtual();
-	String[] dividido = dataAtual.split("-"); 
-	int dia = Integer.parseInt(dividido[2]);
-	int mes = Integer.parseInt(dividido[1]);
-	int ano = Integer.parseInt(dividido[0]);
-    
-    List<LoginsPorDia> listaDeLogins = new ArrayList();
-    //fim da prepara��o
-    
-   
-  
-	String comando = "SELECT data ,COUNT(data) AS quantidade FROM entradas WHERE data BETWEEN '"+ano+"-"+mes+"-01' AND '"+ano+"-"+mes+"-"+dia+"' GROUP BY data"  ; 
-	
-	try {
-		java.sql.Statement stmt = conexao.createStatement();
-		ResultSet rs = stmt.executeQuery(comando);
-		while (rs.next()) {
-			dia2 = new LoginsPorDia();
-			dividido = rs.getString("data").split("-");
-			dia2.setDia(Integer.parseInt(dividido[2]));
-			dia2.setQuantidade(rs.getInt("quantidade"));
-			listaDeLogins.add(dia2);
-		}
-	
-	} catch (Exception e) {
-		e.printStackTrace();
 	}
 	
-	return listaDeLogins;
-
 	
-
-   }
-
-@Override
-public List<Usuario> buscar(String nivel, String busca) {
-	// TODO Auto-generated method stub
-	return null;
-}
+	public List<LoginsPorDia> buscaLoginsPorDia(){
+		//prepara��o
+		LoginsPorDia dia2 = null;
+		Usuario usuario = new Usuario();
+		String dataAtual = usuario.dataAtual();
+		String[] dividido = dataAtual.split("-"); 
+		int dia = Integer.parseInt(dividido[2]);
+		int mes = Integer.parseInt(dividido[1]);
+		int ano = Integer.parseInt(dividido[0]);
+		
+		List<LoginsPorDia> listaDeLogins = new ArrayList<LoginsPorDia>();
+		//fim da prepara��o
+		
+		
+		
+		String comando = "SELECT data ,COUNT(data) AS quantidade FROM entradas WHERE data BETWEEN '"+ano+"-"+mes+"-01' AND '"+ano+"-"+mes+"-"+dia+"' GROUP BY data"  ; 
+		
+		try {
+			java.sql.Statement stmt = conexao.createStatement();
+			ResultSet rs = stmt.executeQuery(comando);
+			while (rs.next()) {
+				dia2 = new LoginsPorDia();
+				dividido = rs.getString("data").split("-");
+				dia2.setDia(Integer.parseInt(dividido[2]));
+				dia2.setQuantidade(rs.getInt("quantidade"));
+				listaDeLogins.add(dia2);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return listaDeLogins;
+	}
+	
+	public List<Usuario> buscar(String nivel, String busca) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 

@@ -3,7 +3,7 @@
  * Funções do perfil Administrador
  * -------------------------------------------
  */	
-
+	
 $(document).ready(function(){
 	//Objeto que guardará o usuário logado assim que soubermos quem ele é
 	var usuarioLogado;

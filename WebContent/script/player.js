@@ -138,13 +138,13 @@ $(document).ready(function(){
  * -------------------------------------------
  */	
 	
-	alteraCadastro = function(){
-		var nome = document.frmmyaccount.txtnome.value;
-		var nascimento = document.frmmyaccount.txtnasci.value;
-		var email = document.frmmyaccount.txtemail.value;
-		var senhaatual = document.frmmyaccount.pwd_asenha.value;
-		var novasenha = document.frmmyaccount.pwd_nsenha.value;
-		var confsenha = document.frmmyaccount.pwd_csenha.value;
+	editaUsuario = function(){
+		var nome = document.frmalterainf.txtnome.value;
+		var email = document.frmalterainf.txtemail.value;
+		var nascimento = document.frmalterainf.txtnascimento.value;
+		var senhaatual = document.frmalterainf.pwdsenha.value;
+		var novasenha = document.frmalterainf.pwdnovasenha.value;
+		var confsenha = document.frmalterainf.pwdconfsenha.value;
 		if((senhaatual=="")||(novasenha=="")||(nome=="")||(email=="")||(nascimento=="")){
 			alert("Preencha todos os campos");
 		} else if (novasenha!=confsenha){ 

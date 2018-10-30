@@ -1,19 +1,12 @@
 html, body{
 	margin: 0;
-		background-image:url("../img/back.jpg");
+	background-image:url("../img/back.jpg");
 }
 h1 ,h2 ,h3 ,h4 ,h5 ,h6{
 	margin:0;
 	padding:0;
 }
-.menuoption{
-  padding: 2px 0px 4px 0px;
-    width:28px;
-	margin-left: 1322px;
-    height:100%;
-    display: inline-block;
-    cursor: pointer;
-}
+
 #excp{
 	margin-right: 300px;
 }
@@ -33,7 +26,7 @@ header{
 	width:200px;
 	height:200px;
 	float: left;
-
+	
 }
 #content{
 	min-width: auto;
@@ -50,21 +43,33 @@ header{
 	background-color: inherit;
 	margin-left: 20px;
 }
-nav.menuprincipal div.menu_item{
-	float: left;
+#limpaFloat{
+	clear: both;
+	display: block;
+}
+div.menu_item{
 	height: 48px;
-	width: 24.85%;
-	border: 1px solid black;
+	width: inherit;
+	border-left: 1px solid black;
 	color: #000000;
 	font-size: 40px;
-	display: inline-block;
-	padding: 0px 0px;
-	text-decoration:none;
-	text-align: center;
+	text-decoration: none;
 }
-nav{
+
+div.menuprincipal{
+	border: 1px solid black;
+	text-align: center;
 	width: 100%;
 	margin: 0px auto;
+}
+
+div.menuprincipal div{
+	display: inline;
+	padding: 0px 45px;
+	text-align: center;
+}
+div.menuprincipal div.inicio{
+	border-left: 0px solid black;
 }
 footer{
 	width: 100%;
@@ -72,18 +77,18 @@ footer{
 	height: 50px;
 	text-align: left;
 	margin: 0px auto;
-		background-color: #ffffff;
-		margin-top: 30px;
+	background-color: #ffffff;
+	margin-top: 30px;
 }
 .overflow{
 	width: 620px;
-		height: 500px;
-		overflow: auto;
-		float: right;
-		margin-right: 30%;
-		margin-top: 1%;
-		background-color: rgba(13, 13, 13, 0.6);
-		color: #ffffff;
+	height: 500px;
+	overflow: auto;
+	float: right;
+	margin-right: 30%;
+	margin-top: 1%;
+	background-color: rgba(13, 13, 13, 0.6);
+	color: #ffffff;
 }
 .ranking tr td  {
 	border:1px solid #000000;
@@ -91,24 +96,24 @@ footer{
 	margin: 0px auto;
 }
 .ranking   {
-border:1px solid #000000;
-padding: 0px 0px;
-margin: 0px auto;
-width: 600px;
+	border:1px solid #000000;
+	padding: 0px 0px;
+	margin: 0px auto;
+	width: 600px;
 }
 .titulopag{
-float: right;
-margin-right: 46%;
-margin-top:2%;
+	float: right;
+	margin-right: 46%;
+	margin-top:2%;
 }
 div#content p#txt1{
-
-		margin-left: 80px;
-		width: 22.21%;
-		padding: 0px 0px;
-		height: auto;
-		margin-right: 200px;
-		float: left;
+	
+	margin-left: 80px;
+	width: 22.21%;
+	padding: 0px 0px;
+	height: auto;
+	margin-right: 200px;
+	float: left;
 }
 div#content h1#titulo1{
 	font-size: 30px;
@@ -126,30 +131,30 @@ div#content h1#titulo2{
 	float: left;
 }
 .login{
-
+	
 	width: 500px;
 	height: 200px;
 	padding-right: 250px;
 	font-size: 20px;
 	margin-left: 300px;
 	margin-top: -20px;
-
+	
 }
 a:link {
-    text-decoration: none;
-		color: black;
+	text-decoration: none;
+	color: black;
 }
 a:visited {
-    text-decoration: none;
-		color: black;
+	text-decoration: none;
+	color: black;
 }
 a:hover {
-    text-decoration: none;
-		color: black;
+	text-decoration: none;
+	color: black;
 }
 a:active {
-    text-decoration: none;
-		color: black;
+	text-decoration: none;
+	color: black;
 }
 .aut{
 	text-align: center;
@@ -161,14 +166,14 @@ a:active {
 .esquecisenha{
 	margin-top: 50px;
 	text-align: center;
-
+	
 }
 
 .limpar{
 	margin-top: 30px;
 	width: 120px;
 	margin-left: 100px;
-
+	
 }
 .enviar{
 	margin-top: 30px;
@@ -177,10 +182,10 @@ a:active {
 }
 
 .cadastro{
-
+	
 	margin-left: 475px;
 	width: 400px;
-  margin-top: 60px;
+	margin-top: 60px;
 	font-size: 25px;
 }
 

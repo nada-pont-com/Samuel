@@ -50,7 +50,11 @@ public class EditaUsuario extends HttpServlet {
 						Usuario usuario = new Usuario();
 						usuario.setLogin(login);
 						usuario.setSenha(request.getParameter("pwdnovasenha"));
-						usuario.setPermissao(request.getParameter("hdpermissao"));
+						if(request.getParameter("hdpermissao").equals("83BC38B441642D71DE2936F5A8D49B38")){
+							usuario.setPermissao("0");
+						}else{
+							usuario.setPermissao("1");
+						}
 						usuario.setNome(request.getParameter("txtnome"));
 						usuario.setNascimento(request.getParameter("txtnascimento"));
 						usuario.setEmail(request.getParameter("txtemail"));

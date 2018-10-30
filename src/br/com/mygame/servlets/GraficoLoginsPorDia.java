@@ -2,9 +2,7 @@ package br.com.mygame.servlets;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import br.com.mygame.classes.FaixaEtaria;
 import br.com.mygame.classes.LoginsPorDia;
-import br.com.mygame.classes.Usuario;
 import br.com.mygame.conexao.Conexao;
 import br.com.mygame.jdbc.JDBCUsuarioDAO;
 

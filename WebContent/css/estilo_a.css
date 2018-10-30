@@ -1,23 +1,16 @@
 html, body{
 	margin: 0;
-		background-image:url("../img/back.jpg");
+	background-image:url("../img/back.jpg");
 }
 h1 ,h2 ,h3 ,h4 ,h5 ,h6{
 	margin:0;
 	padding:0;
 }
-.menuoption{
-  padding: 2px 0px 4px 0px;
-    width:20%;
-    height:100%;
-    display: inline-block;
-    cursor: pointer;
-}
 header{
 	width:auto;
 	height:150px;
 	/*background-color: #ff0000;*/
- margin: 0px auto;
+	margin: 0px auto;
 }
 #imgmenu{
 	width:7.407%;
@@ -45,25 +38,34 @@ div#titulo{
 	background-color: inherit;
 	margin-left: 20px;
 }
+
+#limpaFloat{
+	clear: both;
+	display: block;
+}
 div.menu_item{
-	float:left;
 	height: 48px;
 	width: inherit;
-	border: 1px solid black;
+	border-left: 1px solid black;
 	color: #000000;
 	font-size: 40px;
 	text-decoration: none;
 }
-nav.menuprincipal div{
-	width: 19.85%;
+
+div.menuprincipal{
 	border: 1px solid black;
-	display: inline-block;
-  padding: 0px 0px;
-  text-align: center;
-}
-nav{
+	text-align: center;
 	width: 100%;
 	margin: 0px auto;
+}
+
+div.menuprincipal div{
+	display: inline;
+	padding: 0px 45px;
+	text-align: center;
+}
+div.menuprincipal div.inicio{
+	border-left: 0px solid black;
 }
 
 footer{
@@ -77,13 +79,13 @@ footer{
 }
 .overflow{
 	width: 620px;
-		height: 500px;
-		overflow: auto;
-		margin: 0px auto;
-		margin-right: 30%;
-		margin-top: 1%;
-		background-color: rgba(13, 13, 13, 0.6);
-		color: #ffffff;
+	height: 500px;
+	overflow: auto;
+	margin: 0px auto;
+	margin-right: 30%;
+	margin-top: 1%;
+	background-color: rgba(13, 13, 13, 0.6);
+	color: #ffffff;
 }
 .ranking tr td  {
 	border:1px solid #000000;
@@ -117,45 +119,39 @@ div#content img.icon{
 	height: 50px;
 }
 a:link {
-    text-decoration: none;
-		color: black;
+	text-decoration: none;
+	color: black;
 }
 a:visited {
-    text-decoration: none;
-		color: black;
+	text-decoration: none;
+	color: black;
 }
 a:hover {
-    text-decoration: none;
-		color: black;
+	text-decoration: none;
+	color: black;
 }
 a:active {
-    text-decoration: none;
-		color: black;
+	text-decoration: none;
+	color: black;
 }
 div#content div.m{
 	margin-left: 80px;
 	margin-bottom: 30px;
 }
-div#content div#mostrardados{
-	float:left;
-	margin-left: 230px;
-	margin-top: 100px;
-	font-size: 25px;
+div#content{
+	text-align: center;
 }
 div#content div#alterardados td#botoes{
 	float: left;
 }
 div#content table#Alterar{
+	margin: auto;
 	margin-top: 97px;
 }
 input.alter{
-    width: 400px;
-
-	}
-input, input::-webkit-input-placeholder {
-
+	width: 400px;
 }
-table#inf_a tr td{
+table#inf_a tr td,table.inf_a tr td{
 	border: 1px solid #000000;
 }
 h1#title{
@@ -172,14 +168,6 @@ h1.pl{
 	text-align: center;
 	margin-top: 30px;
 }
-div.logout{
-		text-align: right;
-		width: auto;
-		float: right;
-		height: 30px;
-		margin-right: 50px;
-		margin-top: 35px;
-}
 
 .perfil{
 	width: 600px;
@@ -190,16 +178,16 @@ div.logout{
 }
 
 div.alterar{
-		text-align: center;
-		width: 100px;
-		height: 30px;
-		margin-left: 785px;
+	text-align: center;
+	width: 100px;
+	height: 30px;
+	margin-left: 785px;
 }
 
 div.excluir{
-		text-align: center;
-		width: 100px;
-		margin-left: 785px;
+	text-align: center;
+	width: 100px;
+	margin-left: 785px;
 }
 
 .tabelaper{
@@ -207,10 +195,10 @@ div.excluir{
 }
 
 .cadastro{
-
+	
 	margin-left: 475px;
 	width: 500px;
-  margin-top: 60px;
+	margin-top: 60px;
 	font-size: 25px;
 }
 
