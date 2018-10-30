@@ -1,0 +1,260 @@
+html, body{
+	margin: 0;
+		background-image:url("../img/back.jpg");
+}
+h1 ,h2 ,h3 ,h4 ,h5 ,h6{
+	margin:0;
+	padding:0;
+}
+.menuoption{
+  padding: 2px 0px 4px 0px;
+    width:20%;
+    height:100%;
+    display: inline-block;
+    cursor: pointer;
+}
+header{
+	width:auto;
+	height:150px;
+	/*background-color: #ff0000;*/
+ margin: 0px auto;
+}
+#imgmenu{
+	width:7.407%;
+	height:98px;
+	float: left;
+	border: 1px solid black;
+}
+.img1{
+	width:7.407%;
+	height:98px;
+	float: left;
+}
+#content{
+	min-width: auto;
+	min-height: 600px;
+	background-color: inherit;
+}
+div#titulo{
+	float: left;
+	height: 70px;
+	width: auto;
+	font-size: 30px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	background-color: inherit;
+	margin-left: 20px;
+}
+div.menu_item{
+	float:left;
+	height: 48px;
+	width: inherit;
+	border: 1px solid black;
+	color: #000000;
+	font-size: 40px;
+	text-decoration: none;
+}
+nav.menuprincipal div{
+	width: 19.85%;
+	border: 1px solid black;
+	display: inline-block;
+  padding: 0px 0px;
+  text-align: center;
+}
+nav{
+	width: 100%;
+	margin: 0px auto;
+}
+
+footer{
+	width: 100%;
+	height: 50px;
+	text-align: left;
+	margin: 0px auto;
+	background-color: #ffffff;
+	margin-top: 30px;
+	clear: both;
+}
+.overflow{
+	width: 620px;
+		height: 500px;
+		overflow: auto;
+		margin: 0px auto;
+		margin-right: 30%;
+		margin-top: 1%;
+		background-color: rgba(13, 13, 13, 0.6);
+		color: #ffffff;
+}
+.ranking tr td  {
+	border:1px solid #000000;
+	padding: 0px 0px;
+	margin: 0px auto;
+}
+.ranking   {
+	border:1px solid #000000;
+	padding: 0px 0px;
+	margin: 0px auto;
+	width: 600px;
+}
+.titulopag{
+	margin: 0px auto;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+div#content h1#titulo_a{
+	margin-left: 200px;
+	margin-top: 30px;
+	font-size: 55px;
+}
+div#content h4{
+	margin-left: 200px;
+	margin-top: 20px;
+	font-size: 30px;
+}
+div#content img.icon{
+	width: 3.7034%;
+	height: 50px;
+}
+a:link {
+    text-decoration: none;
+		color: black;
+}
+a:visited {
+    text-decoration: none;
+		color: black;
+}
+a:hover {
+    text-decoration: none;
+		color: black;
+}
+a:active {
+    text-decoration: none;
+		color: black;
+}
+div#content div.m{
+	margin-left: 80px;
+	margin-bottom: 30px;
+}
+div#content div#mostrardados{
+	float:left;
+	margin-left: 230px;
+	margin-top: 100px;
+	font-size: 25px;
+}
+div#content div#alterardados td#botoes{
+	float: left;
+}
+div#content table#Alterar{
+	margin-top: 97px;
+}
+input.alter{
+    width: 400px;
+
+	}
+input, input::-webkit-input-placeholder {
+
+}
+table#inf_a tr td{
+	border: 1px solid #000000;
+}
+h1#title{
+	text-align: center;
+	margin-top: 30px;
+	font-size: 50px;
+}
+div#pl{
+	margin: 0px auto;
+	width: 750px;
+	height: 171px;
+}
+h1.pl{
+	text-align: center;
+	margin-top: 30px;
+}
+div.logout{
+		text-align: right;
+		width: auto;
+		float: right;
+		height: 30px;
+		margin-right: 50px;
+		margin-top: 35px;
+}
+
+.perfil{
+	width: 600px;
+	height: 250px;
+	padding-right: 250px;
+	font-size: 20px;
+	margin-left: 130px;
+}
+
+div.alterar{
+		text-align: center;
+		width: 100px;
+		height: 30px;
+		margin-left: 785px;
+}
+
+div.excluir{
+		text-align: center;
+		width: 100px;
+		margin-left: 785px;
+}
+
+.tabelaper{
+	margin-left: 300px;
+}
+
+.cadastro{
+
+	margin-left: 475px;
+	width: 500px;
+  margin-top: 60px;
+	font-size: 25px;
+}
+
+.cadadmin{
+	text-align: center;
+	margin-top: 60px;
+	width: 1366px;
+}
+
+.limpar{
+	margin-left: 80px;
+	width: 120px;
+	margin-top: 25px;
+}
+
+.enviar{
+	width: 120px;
+}
+
+.tgrafic{
+	text-align: center;
+	margin: 0px auto;
+	margin-top: 60px;
+}
+
+#g1{
+	width: 250px;
+	height: 250px;
+}
+
+#g2{
+	width: 300px;
+	height: 250px;
+}
+.grafico1{
+	float: left;
+	margin: 0px auto;
+	margin-top: 90px;
+	margin-left: 100px
+}
+
+.grafico2{
+	float: left;
+	margin: 0px auto;
+	margin-top:60px;
+	margin-left: 600px;
+}

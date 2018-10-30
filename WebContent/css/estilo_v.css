@@ -1,0 +1,201 @@
+html, body{
+	margin: 0;
+		background-image:url("../img/back.jpg");
+}
+h1 ,h2 ,h3 ,h4 ,h5 ,h6{
+	margin:0;
+	padding:0;
+}
+.menuoption{
+  padding: 2px 0px 4px 0px;
+    width:28px;
+	margin-left: 1322px;
+    height:100%;
+    display: inline-block;
+    cursor: pointer;
+}
+#excp{
+	margin-right: 300px;
+}
+header{
+	width:auto;
+	height:150px;
+	/*background-color: #ff0000;*/
+	margin: 0px auto;
+}
+#imgmenu{
+	width:7.407%;
+	height:98px;
+	float: left;
+	border: 1px solid black;
+}
+.img1{
+	width:200px;
+	height:200px;
+	float: left;
+
+}
+#content{
+	min-width: auto;
+	min-height: 200px;
+	background-color: inherit;
+}
+#titulo{
+	float: left;
+	height: 70px;
+	width: auto;
+	font-size: 30px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	background-color: inherit;
+	margin-left: 20px;
+}
+nav.menuprincipal div.menu_item{
+	float: left;
+	height: 48px;
+	width: 24.85%;
+	border: 1px solid black;
+	color: #000000;
+	font-size: 40px;
+	display: inline-block;
+	padding: 0px 0px;
+	text-decoration:none;
+	text-align: center;
+}
+nav{
+	width: 100%;
+	margin: 0px auto;
+}
+footer{
+	width: 100%;
+	clear: both;
+	height: 50px;
+	text-align: left;
+	margin: 0px auto;
+		background-color: #ffffff;
+		margin-top: 30px;
+}
+.overflow{
+	width: 620px;
+		height: 500px;
+		overflow: auto;
+		float: right;
+		margin-right: 30%;
+		margin-top: 1%;
+		background-color: rgba(13, 13, 13, 0.6);
+		color: #ffffff;
+}
+.ranking tr td  {
+	border:1px solid #000000;
+	padding: 0px 0px;
+	margin: 0px auto;
+}
+.ranking   {
+border:1px solid #000000;
+padding: 0px 0px;
+margin: 0px auto;
+width: 600px;
+}
+.titulopag{
+float: right;
+margin-right: 46%;
+margin-top:2%;
+}
+div#content p#txt1{
+
+		margin-left: 80px;
+		width: 22.21%;
+		padding: 0px 0px;
+		height: auto;
+		margin-right: 200px;
+		float: left;
+}
+div#content h1#titulo1{
+	font-size: 30px;
+	margin-left: 80px;
+	margin-top: 60px;
+	margin-bottom: 30px;
+	float:left;
+}
+div#content h1#titulo2{
+	font-size: 30px;
+	margin-left: 402px;
+	margin-top: 60px;
+	margin-bottom: 30px;
+	margin-right: 500px;
+	float: left;
+}
+.login{
+
+	width: 500px;
+	height: 200px;
+	padding-right: 250px;
+	font-size: 20px;
+	margin-left: 300px;
+	margin-top: -20px;
+
+}
+a:link {
+    text-decoration: none;
+		color: black;
+}
+a:visited {
+    text-decoration: none;
+		color: black;
+}
+a:hover {
+    text-decoration: none;
+		color: black;
+}
+a:active {
+    text-decoration: none;
+		color: black;
+}
+.aut{
+	text-align: center;
+	width: 750px;
+	margin-top: 90px;
+	margin-left: 300px;
+}
+
+.esquecisenha{
+	margin-top: 50px;
+	text-align: center;
+
+}
+
+.limpar{
+	margin-top: 30px;
+	width: 120px;
+	margin-left: 100px;
+
+}
+.enviar{
+	margin-top: 30px;
+	width: 120px;
+	margin-left: 200px;
+}
+
+.cadastro{
+
+	margin-left: 475px;
+	width: 400px;
+  margin-top: 60px;
+	font-size: 25px;
+}
+
+.cadvis{
+	text-align: center;
+	margin-top: 60px;
+	width: 100%;
+}
+
+.limparc{
+	margin-left: 80px;
+	width: 120px;
+	margin-top: 25px;
+}
+
+.enviarc{
+	width: 120px;
+}

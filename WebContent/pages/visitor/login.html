@@ -1,0 +1,22 @@
+      <h1 class="aut">Autenticação</h1>
+      <form  class="login" name="frmautenticacao" method="get" >
+        <table>
+          <tr>
+            <td>Login:</td>
+            <td><input type="text" name="txtlogin" placeholder="Ex: samuel_asteca"></td>
+          </tr>
+          <tr>
+            <td>Senha:</td>
+            <td><input type="password" name="pwdsenha" placeholder="Ex: ********"></td>
+          </tr>
+          <tr>
+             <td>
+             </td>
+           <td><a href="#va" class="esquecisenha" method="POST" onclick="EsqueciSenha()" >Esqueci minha senha</a></td>
+        </tr>
+        <tr>
+          <td><button type="reset" class="limpar">Limpar</button></td>
+          <td><button type="button" class="enviar" onclick="login()">Enviar</button></td>
+        </tr>
+        </table>
+      </form>

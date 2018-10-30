@@ -1,0 +1,31 @@
+      <div class="logout">
+        <a href="#logout" class="finalizarSessao">Logout</a>
+      </div>
+      <h1 class="cadadmin">Cadastro de Administrador</h1>
+      <form class="cadastro" name="frmcadastroA" method="post" id="cadastroAdmin">
+        <table>
+          <tr>
+            <td>Nome:</td>
+            <td><input type="text" name="txtnome" placeholder="Digite o seu nome completo!"></td>
+          </tr>
+          <tr>
+            <td>Data de Nascimento:</td>
+            <td><input type="text" name="txtnasci"></td>
+          </tr>
+          <tr>
+            <td>E-mail:</td>
+            <td><input type="text" name="txtemail"  placeholder="Ex: samuel_asteca@gmail.com" ></td>
+          </tr>
+          <tr>
+            <td>Login:</td>
+            <td><input type="text" name="txtlogin" placeholder="Ex: samuel_asteca"></td>
+          </tr>
+          <tr>
+            <td>Senha:</td>
+            <td><input type="password" name="pwdsenha"  placeholder="Ex: ********"></td>
+          </tr>
+        </table>
+               <input type="hidden" name="hdpermissao" value="0">
+      <button type="reset" class="limpar">Limpar</button>
+      <button type="button" class="enviar" onclick="cadastraAdministrador()">Enviar</button>
+    </form>

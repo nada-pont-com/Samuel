@@ -1,0 +1,51 @@
+      <div class="logout">
+        <a href="#logout" class="finalizarSessao">Logout</a>
+      </div>
+      <h1 id="title">Alterar dados da conta</h1>
+      <div id="mostrardados">
+        <table id="inf_j">
+        <tr>
+          <td>Nome:</td>
+          <td>Epaminondas da Silva Cooler</td>
+        </tr>
+        <tr>
+          <td>Data de Nascimento:</td>
+          <td>09/11/2001</td>
+        </tr>
+        <tr>
+          <td>E-mail:</td>
+          <td>epamicoll123@gmail.com</td>
+        </tr>
+        <tr>
+          <td>Login:</td>
+          <td>epamibrgameplay01</td>
+        </tr>
+        </table>
+      </div>
+      <div id="alterardados">
+        <form  name="alterainf" method="post" onsubmit="return validaAltera()">
+        <table id="Alterar">
+          <tr>
+            <td><input class="alter" type="text" name="txtnome" value="" placeholder="Novo nome"></td>
+          </tr>
+          <tr>
+            <td><input class="alter" type="text" name="txtnasc" value="" placeholder="Nova data de nascimento"></td>
+          </tr>
+          <tr>
+            <td><input class="alter" type="text" name="txtemail" value="" placeholder="Novo e-mail"></td>
+          </tr>
+          <tr>
+            <td><input class="alter" type="password" name="pwd_nsenha" value="" placeholder="Nova senha"></td>
+          </tr>
+          <tr>
+            <td><input class="alter" type="password" name="pwd_csenha" value="" placeholder="Confirma��o da senha"></td>
+          </tr>
+          <tr>
+            <td><input class="alter" type="password" name="pwd_asenha" value="" placeholder="Digite sua senha atual"></td>
+          </tr>
+          <tr>
+            <td id="botoes"><button type="submit">Alterar Dados</button></td>
+          </tr>
+          </table>
+        </form>
+      </div>

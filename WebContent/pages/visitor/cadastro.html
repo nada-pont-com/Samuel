@@ -1,0 +1,28 @@
+      <h1 class="cadvis">Cadastro de Usu�rio</h1>
+      <form class="cadastro" name="frmcadastro" method="post" id="cadastroPlayer" >
+        <table  >
+          <tr>
+            <td>Nome:</td>
+            <td><input type="text" name="txtnome" placeholder="Digite o seu nome completo!"></td>
+          </tr>
+          <tr>
+            <td>Data de Nascimento:</td>
+            <td><input type="text" name="txtnasci"></td>
+          </tr>
+          <tr>
+            <td>E-mail:</td>
+            <td><input type="text" name="txtemail"  placeholder="Ex: samuel_asteca@gmail.com" ></td>
+          </tr>
+          <tr>
+            <td>Login:</td>
+            <td><input type="text" name="txtlogin" placeholder="Ex: samuel_asteca"></td>
+          </tr>
+          <tr>
+            <td>Senha:</td>
+            <td><input type="password" name="pwdsenha"  placeholder="Ex: ********"></td>
+          </tr>
+        </table>
+        <input type="hidden" name="hdpermissao" value="1">
+      <button type="reset" class="limparc">Limpar</button>
+      <input type="button" value="Cadastrar" onclick="cadastro()">
+    </form>
