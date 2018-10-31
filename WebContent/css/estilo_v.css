@@ -2,14 +2,14 @@ html, body{
 	margin: 0;
 	background-image:url("../img/back.jpg");
 }
+body{
+	overflow-x: hidden;
+}
 h1 ,h2 ,h3 ,h4 ,h5 ,h6{
 	margin:0;
 	padding:0;
 }
 
-#excp{
-	margin-right: 300px;
-}
 header{
 	width:auto;
 	height:150px;
@@ -25,8 +25,10 @@ header{
 .img1{
 	width:200px;
 	height:200px;
-	float: left;
-	
+	float: right;	
+}
+.img2{
+	margin-right: 250px;
 }
 #content{
 	min-width: auto;
