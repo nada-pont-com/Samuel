@@ -45,6 +45,7 @@ $(document).ready(function(){
 				$("#username").html(usuarioLogado.login);
 			break;
 			case "perfil":
+				visualizaDados();
 				$("#nome").val(usuarioLogado.nome);
 				$("#email").val(usuarioLogado.email);
 				$("#nascimento").val(usuarioLogado.nascimento);
@@ -130,7 +131,15 @@ $(document).ready(function(){
 		return dados;
 	}
 
-	
+	geraTabelaDoPerfil = function(){
+		var html = "";
+		html += "<tr><td>Nome:</td><td>"+usuarioLogado.nome+"</td>" +
+        	 "</tr><tr><td>Data de Nascimento:</td><td>"+usuarioLogado.nascimento+"</td></tr>" +
+ 			 "<tr><td>E-mail:</td><td>"+usuarioLogado.email+"</td></tr>" +
+ 			 "<tr><td>Login:</td><td>"+usuarioLogado.login+"</td></tr>";
+		return html;
+	}
+
 	
 /*
  * -------------------------------------------
@@ -182,5 +191,10 @@ $(document).ready(function(){
 				}
 			});
 		}
+	}
+
+	visualizaDados = function(){
+		var html = geraTabelaDoPerfil();
+		$("#dadosJoga").html(html);
 	}
 });

@@ -415,13 +415,13 @@ $(document).ready(function(){
 	   });
 	}
 
-	visualizaDados= function(dados){debugger
+	visualizaDados= function(){
 		/*$.ajax({
 			type: "POST",
 			url: PATH + "VisualizaDados",
 			success: function (dados) {*/
 				
-				var html = dadosAdmLogado(dados);
+				var html = dadosAdmLogado();
 				html += "</table>";
 				$("#dadosAdm").html(html);
 			/*},
