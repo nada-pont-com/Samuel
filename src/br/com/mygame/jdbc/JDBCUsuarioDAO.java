@@ -199,6 +199,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		String dataInicial = anoInicial+diaMesAtual;
 		int anoFinal = anoAtual;
 		String dataFinal = anoFinal+diaMesAtual;
+		System.out.println(dataFinal);
 		
 		String comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
 		System.out.println(comando);
@@ -360,7 +361,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		maiorcincocinco.setFaixa("maior que 55");
 		
 		anoInicial = anoAtual;
-		dataInicial = anoInicial+diaMesAtual;
+		dataInicial = "0001-01-01";
 		anoFinal = anoAtual-56;
 		dataFinal = anoFinal+diaMesAtual;
 		

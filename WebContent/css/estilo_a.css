@@ -237,12 +237,20 @@ div.excluir{
 	float: left;
 	margin: 0px auto;
 	margin-top: 90px;
-	margin-left: 100px
+	margin-left: 100px;
+	width: 450px;
+	height: 300px;
+	text-align: center;
+
 }
 
 .grafico2{
 	float: left;
 	margin: 0px auto;
-	margin-top:60px;
-	margin-left: 600px;
+	margin-top:90px;
+	margin-left: 100px;
+	width:450px;
+	height:300px;
+	text-align: center;
+
 }
