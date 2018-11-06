@@ -96,12 +96,39 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		return true;
 	}
 	
-	public boolean deletar(String usuario) {
-		String comando = "DELETE FROM usuarios WHERE usuario = '" + usuario +"'";
-		Statement p;
+	public boolean deleta(String login) {
+		String comando = "DELETE FROM usuarios WHERE login = ?";
+		// System.out.println(login);
 		try {
-			p = this.conexao.createStatement();
-			p.execute(comando);
+			PreparedStatement p = this.conexao.prepareStatement(comando);
+			p.setString(1,login);
+			p.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	public boolean deletaEntrada(String login) {
+		String comando = "DELETE FROM entradas WHERE usuarios_login = ?";
+		// System.out.println(login);
+		try {
+			PreparedStatement p = this.conexao.prepareStatement(comando);
+			p.setString(1,login);
+			p.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	public boolean deletaPartida(String login) {
+		String comando = "DELETE FROM partidas WHERE usuarios_login = ?";
+		// System.out.println(login);
+		try {
+			PreparedStatement p = this.conexao.prepareStatement(comando);
+			p.setString(1,login);
+			p.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
@@ -111,7 +138,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 	
 	public List<Usuario> buscar(String login) {
 		String comando = "SELECT * FROM usuarios";
-		System.out.println(comando);
+		// System.out.println(comando);
 		List<Usuario> listUsuario = new ArrayList<Usuario>();
 		Usuario usuario = null;
 		try {
@@ -178,15 +205,15 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 	public List<FaixaEtaria> buscaJogadoresPorFaixaEtaria(){
 		//prepara��o
 		Date hoje = Calendar.getInstance().getTime();
-		System.out.println(hoje);
+		// System.out.println(hoje);
 		
 		SimpleDateFormat formataDiaMes = new SimpleDateFormat("-MM-dd");
 		String diaMesAtual = formataDiaMes.format(hoje);
-		System.out.println(diaMesAtual);
+		// System.out.println(diaMesAtual);
 		
 		SimpleDateFormat formataAno = new SimpleDateFormat("yyyy");
 		int anoAtual = Integer.parseInt(formataAno.format(hoje));
-		System.out.println(anoAtual);
+		// System.out.println(anoAtual);
 		
 		List <FaixaEtaria> listaDeJogadores = new ArrayList<FaixaEtaria>();
 		//fim prepara��o
@@ -199,10 +226,10 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		String dataInicial = anoInicial+diaMesAtual;
 		int anoFinal = anoAtual;
 		String dataFinal = anoFinal+diaMesAtual;
-		System.out.println(dataFinal);
+		// System.out.println(dataFinal);
 		
 		String comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
-		System.out.println(comando);
+		// System.out.println(comando);
 		try {
 			java.sql.Statement stmt = conexao.createStatement();
 			ResultSet rs = stmt.executeQuery(comando);
@@ -227,7 +254,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		dataFinal = anoFinal+diaMesAtual;
 		
 		comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
-		System.out.println(comando);
+		// System.out.println(comando);
 		try {
 			java.sql.Statement stmt = conexao.createStatement();
 			ResultSet rs = stmt.executeQuery(comando);
@@ -250,7 +277,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		dataFinal = anoFinal+diaMesAtual;
 		
 		comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
-		System.out.println(comando);
+		// System.out.println(comando);
 		try {
 			java.sql.Statement stmt = conexao.createStatement();
 			ResultSet rs = stmt.executeQuery(comando);
@@ -273,7 +300,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		dataFinal = anoFinal+diaMesAtual;
 		
 		comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
-		System.out.println(comando);
+		// System.out.println(comando);
 		try {
 			java.sql.Statement stmt = conexao.createStatement();
 			ResultSet rs = stmt.executeQuery(comando);
@@ -296,7 +323,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		dataFinal = anoFinal+diaMesAtual;
 		
 		comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
-		System.out.println(comando);
+		// System.out.println(comando);
 		try {
 			java.sql.Statement stmt = conexao.createStatement();
 			ResultSet rs = stmt.executeQuery(comando);
@@ -319,7 +346,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		dataFinal = anoFinal+diaMesAtual;
 		
 		comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
-		System.out.println(comando);
+		// System.out.println(comando);
 		try {
 			java.sql.Statement stmt = conexao.createStatement();
 			ResultSet rs = stmt.executeQuery(comando);
@@ -342,7 +369,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		dataFinal = anoFinal+diaMesAtual;
 		
 		comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
-		System.out.println(comando);
+		// System.out.println(comando);
 		try {
 			java.sql.Statement stmt = conexao.createStatement();
 			ResultSet rs = stmt.executeQuery(comando);
@@ -366,7 +393,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		dataFinal = anoFinal+diaMesAtual;
 		
 		comando = "SELECT COUNT(login) as quantidade FROM usuarios WHERE permissao = 1 AND nascimento BETWEEN '"+dataInicial+"' AND '"+dataFinal+"'"; 
-		System.out.println(comando);
+		// System.out.println(comando);
 		try {
 			java.sql.Statement stmt = conexao.createStatement();
 			ResultSet rs = stmt.executeQuery(comando);
@@ -418,9 +445,22 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		return listaDeLogins;
 	}
 	
-	public List<Usuario> buscar(String nivel, String busca) {
+	public List<Usuario> buscar(String nivel, String busca) { //fazer depois para o adm uma busca de todos os adms
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public String geraSenha(){
+		
+		String[] carct ={"0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+		
+		String geradorSenha="";
+		
+		
+		for (int x=0; x<10; x++){
+			int j = (int) (Math.random()*carct.length);
+			geradorSenha += carct[j];
+		}
+		return geradorSenha;
 	}
 }
 

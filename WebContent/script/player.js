@@ -197,4 +197,24 @@ $(document).ready(function(){
 		var html = geraTabelaDoPerfil();
 		$("#dadosJoga").html(html);
 	}
+
+	deletaConta = function(){
+		var login = usuarioLogado.login;
+		console.log(login);
+		$.ajax({
+			type:"POST",
+			url: PATH + "ExcluiUsuario",
+			data: "login="+login,
+			success: function(msg){
+				alert(msg.msg);
+				if(msg.sair!="Samu"){
+					sair();
+				}
+				verificaUsuario();
+			},
+			error: function(info){
+				alert("Erro ao deletar contato: "+ info.status + " - " + info.statusText);
+			}
+		});
+	};
 });
