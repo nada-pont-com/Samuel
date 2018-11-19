@@ -49,11 +49,12 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 	
 	
 	public String buscarPorEmail(String email) {
-		String comando = "SELECT * FROM usuarios WHERE email = '" + email + "'";
+		String comando = "SELECT * FROM usuarios WHERE email = ?";
 		String login = "";
 		try {
-			java.sql.Statement stmt = conexao.createStatement();
-			ResultSet rs = stmt.executeQuery(comando);
+			PreparedStatement stmt = conexao.prepareStatement(comando);
+			stmt.setString(1, email);
+			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				login = rs.getString("login");
 			}
@@ -110,6 +111,23 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		}
 		return true;
 	}
+	public boolean atualizarSenha(Usuario usuario) {
+		
+		String comando = "UPDATE usuarios SET senha=?";
+		comando += " WHERE login=?";
+		PreparedStatement p;
+		try {
+			p = this.conexao.prepareStatement(comando);
+			p.setString(1, Criptografia.criptografaSenha(usuario.getSenha()));
+			p.setString(2, usuario.getLogin());
+			p.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
 	
 	public boolean deleta(String login) {
 		String comando = "DELETE FROM usuarios WHERE login = ?";

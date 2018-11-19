@@ -48,58 +48,61 @@ public class RecuperaSenha extends HttpServlet {
 		Conexao conec = new Conexao();
 		Connection conexao = conec.abrirConexao();
 		JDBCUsuarioDAO jdbcUsuario = new JDBCUsuarioDAO(conexao);
-		String login = jdbcUsuario.buscarPorEmail(request.getParameter("email"));
-		Map<String, String> msg1 = new HashMap<String, String>();
-		String senha = "";
-		String email = request.getParameter("email");
-		senha = jdbcUsuario.geraSenha();
-		System.out.println(login);
-		if (!login.equals("")) {
+		String email = request.getParameter("email").toString();
+		String login = jdbcUsuario.buscarPorEmail(email);
+		Map<String, String> msg = new HashMap<String, String>();
+		String senha = jdbcUsuario.geraSenha();
+		System.out.println("Login: "+login);
+		if (!(login.equals(""))) {
 			Usuario usuario = new Usuario();
 			usuario.setSenha(jdbcUsuario.geraSenha());
+			usuario.setLogin(login);
 			
-			boolean retorno = jdbcUsuario.atualizar(usuario);
-			conec.fecharConexao();
-			
-			if (retorno) {
-				msg1.put("msg", "Senha alterada, um email com a nova senha ser� enviado para "+email+"\n\nCaso tenha problemas entre em contato conosco atravez do email samuelskateasteca@gmail.com");
-			}else {
-				msg1.put("msg", "N�o poss�vel concluir a edi��o de usu�rio.");
-				msg1.put("erro", "true");
-			}
-			
-		}
-		Properties props = new Properties();
-		/** Parâmetros de conexão com servidor Gmail */
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.socketFactory.port", "587");
-		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.port", "587");
-		props.put("mail.smtp.starttls.enable", "true");
 		
-		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("samuelskateasteca@gmail.com", "54MU3LR054");
+			Properties props = new Properties();
+			/** Parâmetros de conexão com servidor Gmail */
+			props.put("mail.smtp.host", "smtp.gmail.com");
+			props.put("mail.smtp.socketFactory.port", "587");
+			props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+			props.put("mail.smtp.auth", "true");
+			props.put("mail.smtp.port", "587");
+			props.put("mail.smtp.starttls.enable", "true");
+			
+			Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication("samuelskateasteca@gmail.com", "54MU3LR054");
+							//("ohmjogo@gmail.com", "ohmjogo129");
+							//("samuelskateasteca@gmail.com", "54MU3LR054");
+				}
+			});
+			/** Ativa Debug para sessão */
+			session.setDebug(true);
+			System.out.println(email);
+			try {
+				Message message = new MimeMessage(session);
+				message.setFrom(new InternetAddress("ohmjogo@gmail.com")); //Remetente
+				Address[] toUser = InternetAddress.parse(email);  
+				message.setRecipients(Message.RecipientType.TO, toUser);
+				message.setSubject("Recuperar Senha - Samuel em busca do lend�rio skate asteca");//Assunto
+				message.setText("Voc� resetou sua senha do site Samuel em busca do lend�rio skate asteca, a sua senha atual � '"+senha+"'. Recomendamos � todos os usu�rios para que mudem suas senhas assim que haverem perdido as mesmas, por quest�es de seguran�a. \n Atenciosamente, Guardi�es do Skate Asteca");
+				/**M�todo para enviar a mensagem criada*/
+				Transport.send(message);
+				System.out.println("Feito!!!");
+				msg.put("msg", "E-mail enviado com sucesso!");
+				boolean retorno = jdbcUsuario.atualizarSenha(usuario);
+				conec.fecharConexao();
+				
+				if (retorno) {
+					msg.put("msg", "Senha alterada, um email com a nova senha ser� enviado para "+email+"\n\nCaso tenha problemas entre em contato conosco atravez do email samuelskateasteca@gmail.com");
+				}else {
+					msg.put("msg", "N�o poss�vel concluir a edi��o de usu�rio.");
+					msg.put("erro", "true");
+				}
+			} catch (MessagingException e) {
+				throw new RuntimeException(e);
 			}
-		});
-		/** Ativa Debug para sessão */
-		session.setDebug(true);
-		Map<String, String> msg = new HashMap<String, String>();
-		System.out.println(email);
-		try {
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("samuelskateasteca@gmail.com")); //Remetente
-			Address[] toUser = InternetAddress.parse(email);  
-			message.setRecipients(Message.RecipientType.TO, toUser);
-			message.setSubject("Recuperar Senha - Samuel em busca do lend�rio skate asteca");//Assunto
-			message.setText("Voc� resetou sua senha do site Samuel em busca do lend�rio skate asteca, a sua senha atual � '"+senha+"'. Recomendamos � todos os usu�rios para que mudem suas senhas assim que haverem perdido as mesmas, por quest�es de seguran�a. \n Atenciosamente, Guardi�es do Skate Asteca");
-			/**M�todo para enviar a mensagem criada*/
-			Transport.send(message);
-			System.out.println("Feito!!!");
-			msg.put("msg", "E-mail enviado com sucesso!");
-		} catch (MessagingException e) {
-			throw new RuntimeException(e);
+		}else {
+			msg.put("msg", "E-mail Não existe no banco de dados");
 		}
 		
 		String json = new Gson().toJson(msg);
