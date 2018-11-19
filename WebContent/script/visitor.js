@@ -40,6 +40,7 @@ $(document).ready(function(){
 		$.ajax({
 			type: "POST",
 			url: "RecuperaSenha",
+			data:"email="+email,
 			success: function (msg) {
 				alert(msg.msg);
 			},

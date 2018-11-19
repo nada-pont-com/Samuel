@@ -48,14 +48,16 @@ public class RecuperaSenha extends HttpServlet {
 		Conexao conec = new Conexao();
 		Connection conexao = conec.abrirConexao();
 		JDBCUsuarioDAO jdbcUsuario = new JDBCUsuarioDAO(conexao);
-		Usuario usuario1 = jdbcUsuario.buscarPorLogin(request.getParameter("email"));
+		String login = jdbcUsuario.buscarPorEmail(request.getParameter("email"));
 		Map<String, String> msg1 = new HashMap<String, String>();
 		String senha = "";
 		String email = request.getParameter("email");
 		senha = jdbcUsuario.geraSenha();
-		if (request.getParameter("email").equals(usuario1.getEmail())) {
+		System.out.println(login);
+		if (!login.equals("")) {
 			Usuario usuario = new Usuario();
-			usuario.setSenha(senha);
+			usuario.setSenha(jdbcUsuario.geraSenha());
+			
 			boolean retorno = jdbcUsuario.atualizar(usuario);
 			conec.fecharConexao();
 			
@@ -84,12 +86,11 @@ public class RecuperaSenha extends HttpServlet {
 		/** Ativa Debug para sessão */
 		session.setDebug(true);
 		Map<String, String> msg = new HashMap<String, String>();
-		
+		System.out.println(email);
 		try {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("samuelskateasteca@gmail.com")); //Remetente
-			Address[] toUser = InternetAddress //Destinat�rio(s)
-			.parse(email);  
+			Address[] toUser = InternetAddress.parse(email);  
 			message.setRecipients(Message.RecipientType.TO, toUser);
 			message.setSubject("Recuperar Senha - Samuel em busca do lend�rio skate asteca");//Assunto
 			message.setText("Voc� resetou sua senha do site Samuel em busca do lend�rio skate asteca, a sua senha atual � '"+senha+"'. Recomendamos � todos os usu�rios para que mudem suas senhas assim que haverem perdido as mesmas, por quest�es de seguran�a. \n Atenciosamente, Guardi�es do Skate Asteca");

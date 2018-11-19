@@ -35,7 +35,12 @@ header{
 	border: 1px solid black;
 }
 .img1{
-	width:200px;
+	width:340px;
+	height:200px;
+	float: left;
+}
+.img2{
+	width:340px;
 	height:200px;
 	float: left;
 }
@@ -93,6 +98,7 @@ footer{
 	background-color: #ffffff;
 }
 .overflow{
+	margin-left:400px;
 	width: 620px;
 	height: 500px;
 	overflow: auto;
