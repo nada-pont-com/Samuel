@@ -564,5 +564,24 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		}
 		return true;
 	}
+
+	public int buscarPartida(String login) {
+		String comando = "SELECT * FROM partidas WHERE usuarios_login=?";
+		int fase = 0;
+		try {
+			PreparedStatement p = this.conexao.prepareStatement(comando);
+			p.setString(1, login);
+			ResultSet rs = p.executeQuery();
+			while(rs.next()){
+				int fasebd = Integer.parseInt(rs.getString("fase"));
+				if(fase<fasebd){
+					fase = fasebd;
+				}
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return fase;
+	}
 }
 
