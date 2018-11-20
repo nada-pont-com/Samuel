@@ -20,7 +20,8 @@ class MenuFases extends Phaser.Scene {
         f1.on('pointerdown', function(){
             this.scene.start('fase1');
         }, this);
-        let fase = window.localStorage.getItem("faseJogo");
+        let fase = parseInt(window.localStorage.getItem("faseJogo"));
+        console.log("fase: "+fase);
         if(fase>=2){
             var f2 = this.add.image(339, 144, "f2").setInteractive();
             f2.on('pointerdown', function(){

@@ -3,14 +3,14 @@ package br.com.mygame.servlets;
 import java.io.IOException;
 import java.sql.Connection;
 
-import java.sql.Connection;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 
 import br.com.mygame.conexao.Conexao;
 import br.com.mygame.jdbc.JDBCUsuarioDAO;
@@ -36,11 +36,12 @@ public class Buscafase extends HttpServlet {
 		HttpSession sessao = request.getSession();
 		String login = sessao.getAttribute("login").toString();
 		int fase = jdbcUsuario.buscarPartida(login);
+		String json = new Gson().toJson(fase);
     	conec.fecharConexao();
 		try {
     		response.setContentType("application/json");
     		response.setCharacterEncoding("UTF-8");
-    		response.getWriter().write(fase);
+    		response.getWriter().write(json);
     	} catch (IOException e) {
     		e.printStackTrace();
     	}

@@ -68,7 +68,8 @@ class Player{
             if(this.validador){
                 this.ponto = new Pontos(scene);
                 let fase = scene.sys.config.key.split("fase");
-                window.localStorage.setItem("faseJogo",fase[1]+1);
+                fase = parseInt(fase[1]);
+                window.localStorage.setItem("faseJogo",fase+1);
                 this.validador = false;
             }
             this.scene.scene.start("MenuFases");

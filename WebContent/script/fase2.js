@@ -204,8 +204,10 @@ class fase2 extends Phaser.Scene{
         this.gameOver = this.tempo.update(this.gameOver);
         this.gameOver = this.cobra.update(this.cobra.cobra,this.gameOver);
         this.tempo.moveTempo(this.player.player);
+        this.menu.update(this.player.player);
         this.coin.update(this.player.player);
         this.player.update(this.coin.coins());
+        this.pontos = this.coin.pontos();
     }
 }
 

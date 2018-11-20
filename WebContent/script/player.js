@@ -107,9 +107,23 @@ $(document).ready(function(){
 			url: PATH + "VisualizaRanking",
 			success: function (dados) {
 				
-				html += geraTabelaRanking(dados);
-				html += "</table>";
-				$(".overflow").html(html);
+				let tabela = geraTabelaRanking(dados);
+				console.log(tabela);
+				if(tabela[1]){
+					let teste1 = html+tabela[0]+"</table>";
+					let teste2 = html+tabela[1]+"</table>";
+					let teste3 = html+tabela[2]+"</table>";
+					$("#fase1").html(teste1);
+					$("#fase2").html(teste2);
+					$("#fase3").html(teste3);
+					$("#fase2").hide();
+					$("#fase3").hide();
+				}else{
+					html += tabela;
+					html += "</table>";
+					$("#fase1").html(html);
+
+				}
 			},
 			error: function(info){
 				alert("Erro ao consultar os contatos: "+ info.status + " - " + info.statusText);
@@ -119,19 +133,52 @@ $(document).ready(function(){
 	}
 
 	geraTabelaRanking = function(listadepontuacoes) {
-		var dados = "";
+		var dados = ["","",""];
+		console.log(listadepontuacoes);
 		if (listadepontuacoes != undefined && listadepontuacoes.length > 0){
-			for (var i=0; i<listadepontuacoes.length; i++){
-				dados += "<tr>" +
-						"<td>"+(i+1)+"</td>" +
-						"<td>"+listadepontuacoes[i].usuarios_login+"</td>" +
-						"<td>"+listadepontuacoes[i].pontuacao+"</td>" +
-						"</tr>"
+			let fase = [];
+			let fase1 = [],fase2 = [],fase3 = [];
+			let f1 = 0,f2 = 0,f3 = 0;
+			for (let i = 0; i < listadepontuacoes.length; i++) {
+				if(listadepontuacoes[i].fase=="1"){
+					fase1[f1] = listadepontuacoes[i];
+					f1++;
+				}else if(listadepontuacoes[i].fase=="2"){
+					fase2[f2] = listadepontuacoes[i];
+					f2++;
+				}else if(listadepontuacoes[i].fase=="3"){
+					fase3[f3] = listadepontuacoes[i];
+					f3++;
+				}
+			}
+			fase[0] = fase1;
+			fase[1] = fase2;
+			fase[2] = fase3;
+			for (var i=0; i<fase.length; i++){
+				for(let i2=0; i2<fase[i].length; i2++){
+					let list = fase[i];
+					dados[i] += "<tr>" +
+					"<td>"+(i+1)+"</td>" +
+					"<td>"+list[i2].usuarios_login+"</td>" +
+					"<td>"+list[i2].pontuacao+"</td>" +
+					"</tr>"
+				}
+				if(fase[i].length==0){
+					dados[i] = "<tr><td colspan='3'>Nenhum registro encontrado</td></tr>";
+				}
 			}
 		} else if (listadepontuacoes == ""){
-			dados += "<tr><td colspan='3'>Nenhum registro encontrado</td></tr>";
+			dados = "<tr><td colspan='3'>Nenhum registro encontrado</td></tr>";
 		}
 		return dados;
+	}
+
+	RankMudaFase = function(fase){
+		$("#fase1").hide();
+		$("#fase2").hide();
+		$("#fase3").hide();
+		$("#fase"+fase).show();
+
 	}
 
 	geraTabelaDoPerfil = function(){
@@ -226,6 +273,7 @@ $(document).ready(function(){
 			type:"POST",
 			url: PATH + "BuscaFase",
 			success:function(msg){
+				console.log(msg);
 				window.localStorage.setItem("faseJogo",msg);
 			}
 		});

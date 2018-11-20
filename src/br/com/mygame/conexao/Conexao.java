@@ -6,7 +6,7 @@ public class Conexao {
 		try {
 			Class.forName("org.gjt.mm.mysql.Driver");
 			conexao = java.sql.DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/samuel_bd", "root", "root");
+					"jdbc:mysql://localhost:3306/samuel_bd", "root", "");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -80,7 +80,7 @@ class fase3 extends Phaser.Scene{
         this.coin.update(this.player.player);
         this.player.update(this.coin.coins());
         this.menu.update(this.player.player);
-        
+        this.pontos = this.coin.pontos();        
     }
 }
  export default fase3;

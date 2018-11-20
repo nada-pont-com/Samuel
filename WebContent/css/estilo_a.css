@@ -27,6 +27,7 @@ header{
 	min-width: auto;
 	min-height: 600px;
 	background-color: inherit;
+	text-align: center;
 }
 div#titulo{
 	float: left;
@@ -81,11 +82,13 @@ footer{
 	width: 620px;
 	height: 500px;
 	overflow: auto;
-	text-align: start;
-	margin: 0px auto;
+	margin: auto;
 	margin-top: 1%;
 	background-color: rgba(13, 13, 13, 0.6);
 	color: #ffffff;
+}
+#buttons{
+	margin: 10px;
 }
 .ranking tr td  {
 	border:1px solid #000000;

@@ -84,15 +84,22 @@ footer{
 	background-color: #ffffff;
 	margin-top: 30px;
 }
+
+#content{
+	text-align: center;
+}
 .overflow{
+	margin: auto;
 	width: 620px;
 	height: 500px;
 	overflow: auto;
-	float: right;
-	margin-right: 30%;
 	margin-top: 1%;
 	background-color: rgba(13, 13, 13, 0.6);
 	color: #ffffff;
+}
+
+#buttons{
+	margin: 10px;
 }
 .ranking tr td  {
 	border:1px solid #000000;
@@ -106,10 +113,9 @@ footer{
 	width: 600px;
 }
 .titulopag{
-	float: right;
-	margin-right: 46%;
 	margin-top:2%;
 }
+
 div#content p#txt1{
 	
 	margin-left: 80px;
