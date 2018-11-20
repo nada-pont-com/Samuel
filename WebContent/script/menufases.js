@@ -20,14 +20,19 @@ class MenuFases extends Phaser.Scene {
         f1.on('pointerdown', function(){
             this.scene.start('fase1');
         }, this);
-        var f2 = this.add.image(339, 144, "f2").setInteractive();
-        f2.on('pointerdown', function(){
-            this.scene.start('fase2');
-        }, this);
-        var f3 = this.add.image(552, 144, "f3").setInteractive();
-        f3.on('pointerdown', function(){
-          this.scene.start('fase3');
-        }, this);
+        let fase = window.localStorage.getItem("faseJogo");
+        if(fase>=2){
+            var f2 = this.add.image(339, 144, "f2").setInteractive();
+            f2.on('pointerdown', function(){
+                this.scene.start('fase2');
+            }, this);
+        }
+        if(fase>=3){
+            var f3 = this.add.image(552, 144, "f3").setInteractive();
+            f3.on('pointerdown', function(){
+                this.scene.start('fase3');
+            }, this);
+        }
         // var f4 = this.add.image(0, 144, "f4").setInteractive();
         // var f5 = this.add.image(0, 144, "f5").setInteractive();
         // var f6 = this.add.image(0, 144, "f6").setInteractive();

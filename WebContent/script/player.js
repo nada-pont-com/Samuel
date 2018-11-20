@@ -57,6 +57,9 @@ $(document).ready(function(){
 			case "ranking":
 				visualizaRanking();
 			break;
+			case "jogo":
+				jogoDados();
+			break;
 		}
 	}
 	
@@ -217,4 +220,14 @@ $(document).ready(function(){
 			}
 		});
 	};
+
+	jogoDados = function(){
+		$.ajax({
+			type:"POST",
+			url: PATH + "BuscaFase",
+			success:function(msg){
+				window.localStorage.setItem("faseJogo",msg);
+			}
+		});
+	}
 });
