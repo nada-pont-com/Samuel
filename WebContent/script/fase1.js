@@ -10,26 +10,26 @@ class fase1 extends Phaser.Scene{
         super({key: "fase1"});
         this.score = 0;
         this.gameOver = false;
-        this.pontos = 0;
+        this.pontos;
         
     }
     init(){
         this.roundPixels = true;
     }
     preload (){
-        this.load.image('bgf1', 'assets/background/fase 1.png');//700x288
-        this.load.image('ground', 'assets/obj/plataforma.png');//700x60
-        this.load.image('plat1','assets/obj/dog house.png');//faixada da loja azul
-        this.load.image('plat3','assets/obj/omega shop.png');//faixada da loja verde
-        this.load.image('plat2', 'assets/obj/plat2.png');//banquinho
-        this.load.image('placa', 'assets/obj/placa_saida.png');//saida
-        this.load.image('coin', 'assets/obj/coin.png');//22x22
-        this.load.image('tlaloc', 'assets/skins/tlaloc.png');//tlaloc
-        this.load.spritesheet('dude', 'assets/skins/skin(1).png', { frameWidth: 31, frameHeight: 36 });//32x48
-        this.load.spritesheet('morcego', 'assets/mobs/morcego.png', { frameWidth: 17, frameHeight: 12 });// 17 x 12 tamanho do frame dp mocego 11 frames
-        this.load.image('OBS7','assets/obj/OBS7.png');//escada
-        this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
-        this.load.image('limite2', 'assets/obj/limite2.png');//700x2 limite do topo do mapa
+        this.load.image('bgf1', '../../assets/background/fase 1.png');//700x288
+        this.load.image('ground', '../../assets/obj/plataforma.png');//700x60
+        this.load.image('plat1','../../assets/obj/dog house.png');//faixada da loja azul
+        this.load.image('plat3','../../assets/obj/omega shop.png');//faixada da loja verde
+        this.load.image('plat2', '../../assets/obj/plat2.png');//banquinho
+        this.load.image('placa', '../../assets/obj/placa_saida.png');//saida
+        this.load.image('coin', '../../assets/obj/coin.png');//22x22
+        this.load.image('tlaloc', '../../assets/skins/tlaloc.png');//tlaloc
+        this.load.spritesheet('dude', '../../assets/skins/skin(1).png', { frameWidth: 31, frameHeight: 36 });//32x48
+        this.load.spritesheet('morcego', '../../assets/mobs/morcego.png', { frameWidth: 17, frameHeight: 12 });// 17 x 12 tamanho do frame dp mocego 11 frames
+        this.load.image('OBS7','../../assets/obj/OBS7.png');//escada
+        this.load.image('limite', '../../assets/obj/limite.png');//limite do mapa
+        this.load.image('limite2', '../../assets/obj/limite2.png');//700x2 limite do topo do mapa
     }
 
     create (){
@@ -118,6 +118,7 @@ class fase1 extends Phaser.Scene{
         this.player.update(this.coin.coins());
         this.menu.update(this.player.player);
         this.gameOver = this.morcego.update(this.morcego.mocego,this.gameOver);
+        this.pontos = this.coin.pontos();
     }
 }
 

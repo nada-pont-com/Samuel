@@ -162,7 +162,7 @@ $(document).ready(function(){
 			$.ajax({
 				type: "POST",
 				url: PATH + "EditaUsuario",
-				data: $("#cadastroUsuario").serialize(),
+				data: $("#edicaoUsuario").serialize(),
 				success: function (msg) {
 					alert(msg.msg);
 					if(!msg.erro)

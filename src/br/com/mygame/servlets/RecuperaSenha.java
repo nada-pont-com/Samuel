@@ -55,7 +55,7 @@ public class RecuperaSenha extends HttpServlet {
 		System.out.println("Login: "+login);
 		if (!(login.equals(""))) {
 			Usuario usuario = new Usuario();
-			usuario.setSenha(jdbcUsuario.geraSenha());
+			usuario.setSenha(senha);
 			usuario.setLogin(login);
 			
 		
@@ -71,20 +71,19 @@ public class RecuperaSenha extends HttpServlet {
 			Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
 					return new PasswordAuthentication("samuelskateasteca@gmail.com", "54MU3LR054");
-							//("ohmjogo@gmail.com", "ohmjogo129");
-							//("samuelskateasteca@gmail.com", "54MU3LR054");
 				}
 			});
 			/** Ativa Debug para sessão */
 			session.setDebug(true);
 			System.out.println(email);
+			System.out.println("senha rec: "+senha);
 			try {
 				Message message = new MimeMessage(session);
-				message.setFrom(new InternetAddress("ohmjogo@gmail.com")); //Remetente
+				message.setFrom(new InternetAddress("samuelskateasteca@gmail.com")); //Remetente
 				Address[] toUser = InternetAddress.parse(email);  
 				message.setRecipients(Message.RecipientType.TO, toUser);
-				message.setSubject("Recuperar Senha - Samuel em busca do lend�rio skate asteca");//Assunto
-				message.setText("Voc� resetou sua senha do site Samuel em busca do lend�rio skate asteca, a sua senha atual � '"+senha+"'. Recomendamos � todos os usu�rios para que mudem suas senhas assim que haverem perdido as mesmas, por quest�es de seguran�a. \n Atenciosamente, Guardi�es do Skate Asteca");
+				message.setSubject("Recuperar Senha - Samuel em busca do lendário skate asteca");//Assunto
+				message.setText("Você resetou sua senha do site Samuel em busca do lendário skate asteca, a sua senha atual: '"+usuario.getSenha()+"'. Recomendamos á todos os usuários para que mudem suas senhas assim que haverem perdido as mesmas, por questões de segurança. \n Atenciosamente, Guardiões do Skate Asteca");
 				/**M�todo para enviar a mensagem criada*/
 				Transport.send(message);
 				System.out.println("Feito!!!");
@@ -95,7 +94,7 @@ public class RecuperaSenha extends HttpServlet {
 				if (retorno) {
 					msg.put("msg", "Senha alterada, um email com a nova senha ser� enviado para "+email+"\n\nCaso tenha problemas entre em contato conosco atravez do email samuelskateasteca@gmail.com");
 				}else {
-					msg.put("msg", "N�o poss�vel concluir a edi��o de usu�rio.");
+					msg.put("msg", "Não possével concluir a edição de usuário.");
 					msg.put("erro", "true");
 				}
 			} catch (MessagingException e) {

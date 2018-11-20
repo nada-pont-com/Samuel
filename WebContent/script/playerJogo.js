@@ -5,6 +5,7 @@ class Player{
         this.scene = scene;
         this.anims = scene.anims;
         this.player;
+        this.validador = true;
         this.vida = 3;
         this.cursors = scene.input.keyboard.createCursorKeys();
         this.platforms = scene.platforms.platforms;
@@ -64,7 +65,10 @@ class Player{
     }
     fimFase(scene){
         if(this.player.x>2800){
-            this.ponto = new Pontos(scene);
+            if(this.validador){
+                this.ponto = new Pontos(scene);
+                this.validador = false;
+            }
             this.scene.scene.start("MenuFases");
         }
     }

@@ -28,13 +28,13 @@ class fase2 extends Phaser.Scene{
 
     }
     preload (){
-        this.load.image('bgf2', 'assets/background/fase 2.png');//700x288
-        this.load.image('ground', 'assets/obj/plataforma.png');//700x60
-        this.load.image('coin', 'assets/obj/coin.png');//22x22
-        this.load.spritesheet('dude', 'assets/skins/dude.png', { frameWidth: 31, frameHeight: 36 });//32x48
-        this.load.spritesheet('cobra', 'assets/mobs/cobra.png', {frameWidth: 36, frameHeight: 36});//32x48
-        this.load.image('OBS7','assets/obj/OBS7.png');//escada
-        this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
+        this.load.image('bgf2', '../../assets/background/fase 2.png');//700x288
+        this.load.image('ground', '../../assets/obj/plataforma.png');//700x60
+        this.load.image('coin', '../../assets/obj/coin.png');//22x22
+        this.load.spritesheet('dude', '../../assets/skins/dude.png', { frameWidth: 31, frameHeight: 36 });//32x48
+        this.load.spritesheet('cobra', '../../assets/mobs/cobra.png', {frameWidth: 36, frameHeight: 36});//32x48
+        this.load.image('OBS7','../../assets/obj/OBS7.png');//escada
+        this.load.image('limite', '../../assets/obj/limite.png');//limite do mapa
     }
 
     create (){

@@ -43,8 +43,8 @@ public class EditaUsuario extends HttpServlet {
 				Usuario usuariobd = jdbcUsuario.buscarPorLogin(login);
 				if (login.equals(usuariobd.getLogin())) {
 					System.out.println("senha bd: "+usuariobd.getSenha());
-
-					String senhaAtualCript = Criptografia.criptografaSenha(request.getParameter("pwdsenha"));
+					System.out.println("senha dig: "+request.getParameter("pwdsenha"));
+					String senhaAtualCript = Criptografia.criptografaSenha(request.getParameter("pwdsenha").toString());
 					System.out.println("senha dig: "+senhaAtualCript);
 					if (senhaAtualCript.equals(usuariobd.getSenha())) {
 						Usuario usuario = new Usuario();

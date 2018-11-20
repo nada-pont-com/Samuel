@@ -15,14 +15,14 @@ class fase3 extends Phaser.Scene{
         this.roundPixels = true;
     }
     preload (){
-        this.load.image('bgf3', 'assets/background/fase 3.png');//700x288
-        this.load.image('ground', 'assets/obj/plataforma.png');//700x60
-        this.load.image('tronco','assets/obj/tronco2.png');//tronco        
-        this.load.image('coin', 'assets/obj/coin.png');//22x22
-        this.load.spritesheet('dude', 'assets/skins/dude.png', { frameWidth: 31, frameHeight: 36 });//32x48
-        this.load.spritesheet('boss', 'assets/mobs/tlaloc.png', {frameWidth: 174, frameHeight: 232});
-        this.load.image('OBS7','assets/obj/OBS7.png');//escada
-        this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
+        this.load.image('bgf3', '../../assets/background/fase 3.png');//700x288
+        this.load.image('ground', '../../assets/obj/plataforma.png');//700x60
+        this.load.image('tronco','../../assets/obj/tronco2.png');//tronco        
+        this.load.image('coin', '../../assets/obj/coin.png');//22x22
+        this.load.spritesheet('dude', '../../assets/skins/dude.png', { frameWidth: 31, frameHeight: 36 });//32x48
+        this.load.spritesheet('boss', '../../assets/mobs/tlaloc.png', {frameWidth: 174, frameHeight: 232});
+        this.load.image('OBS7','../../assets/obj/OBS7.png');//escada
+        this.load.image('limite', '../../assets/obj/limite.png');//limite do mapa
     }
      create (){
         this.scene.bringToTop();
@@ -65,7 +65,7 @@ class fase3 extends Phaser.Scene{
         this.cameras.main.setBounds(0, 0, 1400, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
-        this.physics.add.overlap(this.boss.boss, this.player.player,this.boss.dano);
+        this.physics.add.collider(this.boss.boss, this.player.player,this.boss.dano,null,this);
     }
      update(){
         if (this.gameOver){

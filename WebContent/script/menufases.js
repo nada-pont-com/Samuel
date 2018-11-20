@@ -8,12 +8,13 @@ class MenuFases extends Phaser.Scene {
     }
 
     preload(){
-        this.load.image("f1", "../assets/buttons/f1.png");
-        this.load.image("f2", "../assets/buttons/f2.png");
-        this.load.image("f3", "../assets/buttons/f3.png");
-        this.load.image("bgmf", "../assets/background/menufases.png");
+        this.load.image("f1", "../../assets/buttons/f1.png");
+        this.load.image("f2", "../../assets/buttons/f2.png");
+        this.load.image("f3", "../../assets/buttons/f3.png");
+        this.load.image("bgmf", "../../assets/background/menufases.png");
     }
     create(){
+        this.scene.bringToTop();
         var bg = this.add.image(350, 144, "bgmf");
         var f1 = this.add.image(113, 144, "f1").setInteractive();
         f1.on('pointerdown', function(){

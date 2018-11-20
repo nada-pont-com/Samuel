@@ -1,11 +1,15 @@
 let movboss = "";
 let number = 0;
 let gameOver;
+let vida;
+let sceneF;
 class boss{
     constructor(scene){
         gameOver = false;
         this.scene = scene;
+        sceneF = scene;
         this.boss;
+        vida = 3;
         this.distancia = {x:{},x2:{}};
         number = 0;
         this.physics = scene.physics;
@@ -28,11 +32,28 @@ class boss{
         this.boss.setBounce(1,1);
         
     }
-    dano(player,boss,scene){
-        gameOver = true;
+    dano(boss,player){
+        console.log(vida);
+        console.log(player.body.touching);
+        console.log(boss.body.touching);
+        if(player.body.touching.down && boss.body.touching.up){
+            vida--;
+            if(movboss=="dir"){
+                player.setVelocityX(200);
+            }else{
+                player.setVelocityX(-200);
+            }
+            player.setVelocityY(-200);
+        }else{
+            gameOver = true;
+        }
+        if(vida==0){
+            this.ponto = new Pontos(sceneF);
+            sceneF.scene.pause("fase3");
+            sceneF.scene.start("EndGame");
+        }
     }
     update(boss,gameOver2){
-    
             let x = boss.x;
             // console.log(x);
             if(movboss=="esq"){

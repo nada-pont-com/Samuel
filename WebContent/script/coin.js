@@ -7,7 +7,7 @@ class Coin{
         this.coin;
         this.txt = scene.add;
         this.txtPonto;
-        pontos = scene.pontos;
+        pontos = 0;
         this.key = scene.sys.config.key;
         this.create();
     }
@@ -31,6 +31,9 @@ class Coin{
     }
     geraMoedas(x,y){
         this.coin.create(x, y, 'coin');
+    }
+    pontos(){
+        return pontos;
     }
     coins(){
         if(coin!=null && coin!=true){

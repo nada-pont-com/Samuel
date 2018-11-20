@@ -116,10 +116,13 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 		String comando = "UPDATE usuarios SET senha=?";
 		comando += " WHERE login=?";
 		PreparedStatement p;
+		System.out.println("senha: jd "+usuario.getSenha());
+		
 		try {
 			p = this.conexao.prepareStatement(comando);
 			p.setString(1, Criptografia.criptografaSenha(usuario.getSenha()));
 			p.setString(2, usuario.getLogin());
+			System.out.println(p);
 			p.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -494,6 +497,72 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 			geradorSenha += carct[j];
 		}
 		return geradorSenha;
+	}
+	
+	public boolean inserePartida(Partidas partida,Usuario usuario){
+		String comando = "INSERT INTO partidas (moedas,s_tempo,pontuacao,fase,usuarios_login) VALUES (?,?,?,?,?)";
+		try {
+			PreparedStatement p = this.conexao.prepareStatement(comando);
+			p.setString(1, "1");
+			p.setString(2, partida.gets_tempo());
+			p.setString(3, partida.getpontuacao());
+			p.setString(4, partida.getfase());
+			p.setString(5, usuario.getLogin());
+			p.execute();
+		} catch (SQLException e) {
+			//TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	public Partidas buscarPartidas(String login,String fase) {
+		String comando = "SELECT * FROM partidas WHERE usuarios_login=? AND fase=?";
+		Partidas partida = null;
+		try {
+			PreparedStatement p = this.conexao.prepareStatement(comando);
+			p.setString(1, login);
+			p.setString(2, fase);
+			ResultSet rs = p.executeQuery();
+			while(rs.next()){
+				partida = new Partidas();
+				String id = rs.getString("id");
+				String moedas = rs.getString("moedas");
+				String s_tempo = rs.getString("s_tempo");
+				String pontuacao = rs.getString("pontuacao");
+				String fasebd = rs.getString("fase");
+				String usuarios_login = rs.getString("usuarios_login");
+				
+				partida.setid(id);
+				partida.setmoedas(moedas);
+				partida.sets_tempo(s_tempo);
+				partida.setpontuacao(pontuacao);
+				partida.setfase(fasebd);
+				partida.setusuarios_login(usuarios_login);
+				
+			}
+		} catch (SQLException e) {
+			//TODO: handle exception
+			e.printStackTrace();
+		}
+		return partida;
+	}
+	
+	public boolean atualizaPartida(Partidas partida, Usuario usuario) {
+		String comando = "UPDATE partidas set pontuacao=? WHERE usuarios_login=? AND fase=?";
+		try {
+			PreparedStatement p = this.conexao.prepareStatement(comando);
+			p.setString(1, partida.getpontuacao());
+			p.setString(2, usuario.getLogin());
+			p.setString(3, partida.getfase());
+			p.executeUpdate();
+		} catch (SQLException e) {
+			//TODO: handle exception
+			e.printStackTrace();
+			return false;			
+		}
+		return true;
 	}
 }
 
